@@ -1,3 +1,4 @@
+import { randomBytes } from 'node:crypto';
 import { Entity, PrimaryGeneratedColumn, Column, DataSource, EntityManager } from 'typeorm';
 
 @Entity()
@@ -50,8 +51,7 @@ const [r1, r2] = await Promise.allSettled([t1, t2])
 const entities = await roleRepository.find()
 
 console.log(entities)
-
-console.log(r1.status, r2.status)
+console.log(r1, r2)
 
 async function transaction<T> (
   dataSource: DataSource,
